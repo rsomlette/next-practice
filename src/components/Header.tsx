@@ -2,7 +2,7 @@ import * as React from "react";
 import Link from "next/link";
 
 import styled from "../lib/styled-components";
-import { ThemeSwitcher } from "./themeSwitcher";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 const Wrapper = styled.header`
   display: flex;

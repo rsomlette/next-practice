@@ -1,7 +1,7 @@
 import * as React from "react";
 import Head from "next/head";
 
-import withTheme from "../hoc/withTheme";
+import { withTheme, IWithThemeProps } from "../hoc/withTheme";
 import styled from "../lib/styled-components";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
@@ -10,22 +10,20 @@ const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: ${props => props.theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.text};
 `;
 
-type Props = {
-  title?: string;
-  currentTheme: string;
-  switchTheme: any;
+interface IProps extends IWithThemeProps {
+  title: string;
   children: any;
-};
+}
 
-const Layout: React.FunctionComponent<Props> = ({
+const Layout: React.FunctionComponent<IProps> = ({
   children,
   title = "This is the default title",
-  switchTheme,
-  currentTheme
+  currentTheme,
+  switchTheme
 }) => (
   <PageWrapper>
     <Head>

@@ -1,9 +1,24 @@
 import * as React from "react";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "../theme";
+import { Subtract } from "./themeUtils";
 
-export default (ComposedComponent: any) => {
-  return class WrapperComponent extends React.PureComponent {
+export interface IWithThemeProps {
+  currentTheme: string;
+  switchTheme: () => void;
+}
+
+interface IState {
+  currentTheme: string | null;
+}
+
+export const withTheme = <P extends IWithThemeProps>(
+  ComposedComponent: React.ComponentType<P>
+) =>
+  class WrapperComponent extends React.Component<
+    Subtract<P, IWithThemeProps>,
+    IState
+  > {
     public state = {
       currentTheme: ""
     };
@@ -24,8 +39,9 @@ export default (ComposedComponent: any) => {
     };
 
     public render() {
-      const theme =
-        this.state.currentTheme === "darkTheme" ? darkTheme : lightTheme;
+      const { currentTheme } = this.state;
+      const theme = currentTheme === "darkTheme" ? darkTheme : lightTheme;
+
       return (
         <ThemeProvider theme={theme}>
           <ComposedComponent
@@ -37,4 +53,3 @@ export default (ComposedComponent: any) => {
       );
     }
   };
-};

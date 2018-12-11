@@ -1,8 +1,9 @@
+import * as React from "react";
 import Link from "next/link";
 import Layout from "../src/components/Layout";
 
 export default () => (
-  <Layout title="Home | Next.js + TypeScript Example">
+  <Layout title="Home">
     <h1>Hello Next.js 👋</h1>
     <p>
       <Link href="/about">

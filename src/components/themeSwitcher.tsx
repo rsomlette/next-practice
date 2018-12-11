@@ -15,7 +15,7 @@ const NavItem = styled.div`
   text-decoration: none;
   text-align: center;
   border-radius: 2px;
-  color: ${props => props.theme.colors.text};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 interface IProps {
@@ -23,13 +23,11 @@ interface IProps {
   switchTheme: () => void;
 }
 
-export class ThemeSwitcher extends React.PureComponent<IProps> {
-  public render() {
-    const { currentTheme } = this.props;
-    return (
-      <NavItem onClick={this.props.switchTheme}>
-        {currentTheme === "darkTheme" ? <Sun /> : <Moon />}
-      </NavItem>
-    );
-  }
-}
+export const ThemeSwitcher: React.FunctionComponent<IProps> = ({
+  currentTheme,
+  switchTheme
+}) => (
+  <NavItem onClick={switchTheme}>
+    {currentTheme === "darkTheme" ? <Sun /> : <Moon />}
+  </NavItem>
+);
