@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import styled from "../lib/styled-components";
 import { ThemeSwitcher } from "./ThemeSwitcher";
+import { Paths } from "../routes";
 
 const Wrapper = styled.header`
   display: flex;
@@ -30,12 +31,16 @@ export const Header = (props: IProps) => (
     <div>React Practice</div>
     <Navigation>
       <nav>
-        <Link href="/">
+        <Link href={Paths.home}>
           <a>Home</a>
         </Link>{" "}
         |{" "}
-        <Link href="/about">
+        <Link href={Paths.about}>
           <a>About</a>
+        </Link>{" "}
+        |{" "}
+        <Link href={Paths.blog}>
+          <a>Blog</a>
         </Link>
       </nav>
       <ThemeSwitcher {...props} />
