@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "../theme";
-import { Subtract } from "./themeUtils";
+import { Subtract } from "../lib/themeUtils";
 
 export interface IWithThemeProps {
   currentTheme: string;
